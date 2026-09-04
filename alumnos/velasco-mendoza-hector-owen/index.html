@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Historia de la Inteligencia Artificial</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --cyan:#00eaff;
+    --blue:#3867ff;
+    --purple:#9d4edd;
+    --green:#00ff9d;
+    --orange:#ff9f1c;
+    --pink:#ff3cac;
+    --bg:#030712;
+    --card:rgba(12,20,38,.82);
+    --text:#f4f7ff;
+    --muted:#9caac4;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%,rgba(0,234,255,.12),transparent 25%),
+        radial-gradient(circle at 80% 30%,rgba(157,78,221,.13),transparent 30%),
+        radial-gradient(circle at 50% 90%,rgba(0,255,157,.08),transparent 25%),
+        var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* PARTICULAS */
+
+#particles{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.particle{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:var(--cyan);
+    border-radius:50%;
+    opacity:.6;
+    animation:float 8s infinite ease-in-out;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);opacity:.2}
+    50%{transform:translateY(-80px);opacity:1}
+}
+
+/* HEADER */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    position:relative;
+}
+
+.hero-content{
+    max-width:1100px;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 20px;
+    border:1px solid rgba(0,234,255,.5);
+    border-radius:50px;
+    color:var(--cyan);
+    background:rgba(0,234,255,.06);
+    font-size:13px;
+    letter-spacing:3px;
+    margin-bottom:25px;
+    box-shadow:0 0 25px rgba(0,234,255,.15);
+}
+
+.hero h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:clamp(45px,8vw,100px);
+    line-height:1;
+    font-weight:900;
+    background:linear-gradient(
+        90deg,
+        #fff,
+        var(--cyan),
+        #fff,
+        var(--purple)
+    );
+    background-size:300%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:gradient 6s infinite linear;
+}
+
+@keyframes gradient{
+    to{background-position:300%}
+}
+
+.hero h2{
+    margin-top:25px;
+    font-size:clamp(20px,3vw,32px);
+    color:#b9c6dd;
+    font-weight:400;
+}
+
+.hero p{
+    max-width:700px;
+    margin:30px auto;
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.8;
+}
+
+.start-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 30px;
+    border-radius:50px;
+    border:1px solid var(--cyan);
+    background:rgba(0,234,255,.08);
+    color:white;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(0,234,255,.15);
+}
+
+.start-btn:hover{
+    background:var(--cyan);
+    color:#001014;
+    transform:translateY(-4px);
+    box-shadow:0 0 40px rgba(0,234,255,.5);
+}
+
+/* INDICADOR */
+
+.scroll-indicator{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    color:var(--muted);
+    font-size:12px;
+    letter-spacing:3px;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    50%{transform:translate(-50%,10px)}
+}
+
+/* TIMELINE */
+
+.timeline-section{
+    max-width:1250px;
+    margin:auto;
+    padding:100px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title span{
+    color:var(--cyan);
+    font-size:13px;
+    letter-spacing:4px;
+}
+
+.section-title h2{
+    font-family:'Orbitron';
+    font-size:clamp(30px,5vw,55px);
+    margin-top:15px;
+}
+
+/* FILTROS */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:70px;
+}
+
+.filter{
+    padding:10px 18px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.04);
+    color:#cbd5e1;
+    border-radius:30px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.filter:hover,
+.filter.active{
+    border-color:var(--cyan);
+    color:var(--cyan);
+    box-shadow:0 0 20px rgba(0,234,255,.15);
+}
+
+/* LINEA */
+
+.timeline{
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    width:3px;
+    height:100%;
+    transform:translateX(-50%);
+    background:linear-gradient(
+        to bottom,
+        transparent,
+        var(--cyan),
+        var(--purple),
+        var(--orange),
+        var(--green),
+        transparent
+    );
+    box-shadow:
+        0 0 10px var(--cyan),
+        0 0 30px rgba(0,234,255,.4);
+}
+
+/* EVENTO */
+
+.event{
+    width:50%;
+    padding:25px 50px;
+    position:relative;
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s ease;
+}
+
+.event.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.event:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.event:nth-child(even){
+    left:50%;
+}
+
+.dot{
+    position:absolute;
+    top:45px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:#020617;
+    border:4px solid var(--cyan);
+    box-shadow:
+        0 0 10px var(--cyan),
+        0 0 30px var(--cyan);
+    z-index:5;
+}
+
+.event:nth-child(odd) .dot{
+    right:-11px;
+}
+
+.event:nth-child(even) .dot{
+    left:-11px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);
+    background:linear-gradient(
+        145deg,
+        rgba(20,30,55,.9),
+        rgba(5,12,25,.92)
+    );
+    border-radius:22px;
+    padding:25px;
+    cursor:pointer;
+    transition:.4s;
+    box-shadow:0 15px 50px rgba(0,0,0,.25);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(0,234,255,.25),
+        transparent
+    );
+    transform:translateX(-100%);
+    transition:.6s;
+}
+
+.card:hover::before{
+    transform:translateX(100%);
+}
+
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+    border-color:rgba(0,234,255,.6);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.5),
+        0 0 30px rgba(0,234,255,.12);
+}
+
+.card-image{
+    height:190px;
+    overflow:hidden;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.year{
+    display:inline-block;
+    font-family:'Orbitron';
+    font-size:28px;
+    color:var(--cyan);
+    margin-bottom:8px;
+}
+
+.card h3{
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+.tag{
+    display:inline-block;
+    margin-top:18px;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    background:rgba(0,234,255,.1);
+    color:var(--cyan);
+    border:1px solid rgba(0,234,255,.25);
+}
+
+/* COLORES POR ERA */
+
+.diagnostic .dot{
+    border-color:var(--green);
+    box-shadow:0 0 20px var(--green);
+}
+
+.diagnostic .year,
+.diagnostic .tag{
+    color:var(--green);
+}
+
+.predictive .dot{
+    border-color:#54c8ff;
+    box-shadow:0 0 20px #54c8ff;
+}
+
+.predictive .year,
+.predictive .tag{
+    color:#54c8ff;
+}
+
+.generative .dot{
+    border-color:var(--orange);
+    box-shadow:0 0 20px var(--orange);
+}
+
+.generative .year,
+.generative .tag{
+    color:var(--orange);
+}
+
+.current .dot{
+    border-color:var(--pink);
+    box-shadow:0 0 20px var(--pink);
+}
+
+.current .year,
+.current .tag{
+    color:var(--pink);
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(12px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:100;
+}
+
+.modal.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.modal-content{
+    max-width:700px;
+    width:100%;
+    max-height:90vh;
+    overflow:auto;
+    background:
+        linear-gradient(145deg,#101a30,#050a15);
+    border:1px solid rgba(0,234,255,.4);
+    border-radius:28px;
+    padding:35px;
+    position:relative;
+    box-shadow:
+        0 0 80px rgba(0,234,255,.15);
+    transform:scale(.8);
+    transition:.4s;
+}
+
+.modal.show .modal-content{
+    transform:scale(1);
+}
+
+.modal-content img{
+    width:100%;
+    max-height:300px;
+    object-fit:cover;
+    border-radius:18px;
+    margin-bottom:25px;
+}
+
+.close{
+    position:absolute;
+    top:15px;
+    right:20px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(0,0,0,.4);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.modal-year{
+    color:var(--cyan);
+    font-family:'Orbitron';
+    font-size:38px;
+}
+
+.modal h2{
+    font-size:30px;
+    margin:10px 0 20px;
+}
+
+.modal p{
+    color:#aebbd0;
+    line-height:1.9;
+}
+
+/* FINAL */
+
+.future{
+    text-align:center;
+    padding:130px 20px;
+    position:relative;
+}
+
+.future h2{
+    font-family:'Orbitron';
+    font-size:clamp(35px,6vw,70px);
+    background:linear-gradient(90deg,var(--cyan),white,var(--purple));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.future p{
+    max-width:700px;
+    margin:25px auto;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:800px){
+
+    .timeline::before{
+        left:20px;
+    }
+
+    .event,
+    .event:nth-child(even),
+    .event:nth-child(odd){
+        width:100%;
+        left:0;
+        text-align:left;
+        padding-left:60px;
+        padding-right:0;
+    }
+
+    .event:nth-child(odd) .dot,
+    .event:nth-child(even) .dot{
+        left:9px;
+        right:auto;
+    }
+
+    .card-image{
+        height:170px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PARTICULAS -->
+<div id="particles"></div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ◉ LA HISTORIA DE LA IA
+        </div>
+
+        <h1>INTELIGENCIA<br>ARTIFICIAL</h1>
+
+        <h2>De una neurona artificial a una nueva era tecnológica.</h2>
+
+        <p>
+            Explora los acontecimientos que transformaron la relación
+            entre humanos y máquinas. Desde los primeros modelos
+            matemáticos hasta la inteligencia artificial generativa presentado por el estudiante hector owen velasco mendoza.
+        </p>
+
+        <a href="#timeline" class="start-btn">
+            EXPLORAR LA HISTORIA →
+        </a>
+
+    </div>
+
+    <div class="scroll-indicator">
+        DESPLAZA PARA COMENZAR ↓
+    </div>
+
+</section>
+
+
+<!-- TIMELINE -->
+
+<section class="timeline-section" id="timeline">
+
+    <div class="section-title">
+
+        <span>1943 — 2025</span>
+
+        <h2>LA EVOLUCIÓN DE LA IA</h2>
+
+    </div>
+
+
+    <!-- FILTROS -->
+
+    <div class="filters">
+
+        <button class="filter active" data-filter="all">
+            TODAS
+        </button>
+
+        <button class="filter" data-filter="diagnostic">
+            🟢 DIAGNÓSTICA
+        </button>
+
+        <button class="filter" data-filter="predictive">
+            🔵 PREDICTIVA
+        </button>
+
+        <button class="filter" data-filter="generative">
+            🟠 GENERATIVA
+        </button>
+
+        <button class="filter" data-filter="current">
+            🟣 ACTUAL
+        </button>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <!-- 1943 -->
+
+        <article class="event diagnostic"
+        data-year="1943"
+        data-title="El nacimiento de la neurona artificial"
+        data-description="Warren McCulloch y Walter Pitts presentan un modelo matemático de una neurona artificial. Este trabajo se convierte en una de las bases fundamentales para el desarrollo posterior de las redes neuronales artificiales."
+        data-image="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">1943</div>
+
+                <h3>🧠 El nacimiento de la neurona artificial</h3>
+
+                <p>
+                    Warren McCulloch y Walter Pitts presentan
+                    el primer modelo matemático de una neurona artificial.
+                </p>
+
+                <span class="tag">ERA DIAGNÓSTICA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 1950 -->
+
+        <article class="event diagnostic"
+        data-year="1950"
+        data-title="¿Pueden pensar las máquinas?"
+        data-description="Alan Turing plantea una de las preguntas más importantes de la computación: ¿puede una máquina pensar? Propone el conocido Test de Turing para evaluar si una máquina puede mantener una conversación indistinguible de la de un ser humano."
+        data-image="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">1950</div>
+
+                <h3>💡 ¿Pueden pensar las máquinas?</h3>
+
+                <p>
+                    Alan Turing propone el famoso
+                    <strong>Test de Turing</strong>.
+                </p>
+
+                <span class="tag">ERA DIAGNÓSTICA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 1955 -->
+
+        <article class="event diagnostic"
+        data-year="1955"
+        data-title="Nace la Inteligencia Artificial"
+        data-description="John McCarthy utiliza el término Inteligencia Artificial en la propuesta para la conferencia de Dartmouth. Este acontecimiento es considerado uno de los puntos fundacionales de la IA como disciplina."
+        data-image="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">1955</div>
+
+                <h3>🚀 Nace el término "Inteligencia Artificial"</h3>
+
+                <p>
+                    John McCarthy introduce oficialmente
+                    el término que cambiaría la tecnología.
+                </p>
+
+                <span class="tag">ERA DIAGNÓSTICA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 1961 -->
+
+        <article class="event diagnostic"
+        data-year="1961"
+        data-title="El primer robot industrial"
+        data-description="General Motors instala Unimate, considerado el primer robot industrial utilizado en una línea de producción. El robot realizaba tareas repetitivas y peligrosas para los trabajadores."
+        data-image="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">1961</div>
+
+                <h3>🤖 El primer robot industrial</h3>
+
+                <p>
+                    Unimate entra en una línea de producción
+                    y comienza la era de la robótica industrial.
+                </p>
+
+                <span class="tag">ERA DIAGNÓSTICA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 1964 -->
+
+        <article class="event diagnostic"
+        data-year="1964"
+        data-title="La máquina que comenzó a conversar"
+        data-description="Joseph Weizenbaum desarrolla ELIZA, uno de los primeros programas de procesamiento de lenguaje natural capaces de simular una conversación con un usuario."
+        data-image="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">1964</div>
+
+                <h3>🗣️ La máquina que comenzó a conversar</h3>
+
+                <p>
+                    Aparece ELIZA, uno de los primeros
+                    sistemas de conversación hombre-máquina.
+                </p>
+
+                <span class="tag">ERA DIAGNÓSTICA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 1966 -->
+
+        <article class="event predictive"
+        data-year="1966"
+        data-title="El robot que aprendió a moverse"
+        data-description="Shakey se convierte en uno de los primeros robots móviles capaces de percibir su entorno, planificar acciones y desplazarse de manera autónoma."
+        data-image="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1487887235947-a955ef187fcc?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">1966</div>
+
+                <h3>🧭 El robot que aprendió a moverse</h3>
+
+                <p>
+                    Shakey combina percepción, planificación
+                    y movimiento autónomo.
+                </p>
+
+                <span class="tag">ERA PREDICTIVA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 1977 -->
+
+        <article class="event predictive"
+        data-year="1977"
+        data-title="Las máquinas comienzan a ver"
+        data-description="Los avances en visión artificial y reconocimiento de patrones permiten que las computadoras comiencen a interpretar información visual."
+        data-image="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">1977</div>
+
+                <h3>👁️ Las máquinas comienzan a "ver"</h3>
+
+                <p>
+                    La visión artificial abre nuevas posibilidades
+                    para que las máquinas interpreten imágenes.
+                </p>
+
+                <span class="tag">ERA PREDICTIVA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 2002 -->
+
+        <article class="event predictive"
+        data-year="2002"
+        data-title="La IA llega a los hogares"
+        data-description="Roomba populariza los robots domésticos autónomos, capaces de desplazarse por una casa y realizar tareas de limpieza."
+        data-image="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">2002</div>
+
+                <h3>🏠 La IA llega a los hogares</h3>
+
+                <p>
+                    Los robots autónomos comienzan a formar
+                    parte de la vida cotidiana.
+                </p>
+
+                <span class="tag">ERA PREDICTIVA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 2011 -->
+
+        <article class="event predictive"
+        data-year="2011"
+        data-title="La IA derrota a los humanos"
+        data-description="IBM Watson participa en Jeopardy! y derrota a reconocidos campeones humanos, demostrando grandes avances en procesamiento del lenguaje natural."
+        data-image="https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">2011</div>
+
+                <h3>🏆 La IA derrota a los humanos</h3>
+
+                <p>
+                    IBM Watson demuestra que una máquina
+                    puede competir en preguntas de conocimiento.
+                </p>
+
+                <span class="tag">ERA PREDICTIVA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 2014 -->
+
+        <article class="event predictive"
+        data-year="2014"
+        data-title="La IA se acerca a imitar al humano"
+        data-description="Los sistemas conversacionales continúan avanzando y algunos programas consiguen convencer a determinados jueces durante pruebas inspiradas en el Test de Turing."
+        data-image="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">2014</div>
+
+                <h3>🧑‍💻 La IA se acerca al humano</h3>
+
+                <p>
+                    Las máquinas mejoran su capacidad
+                    para mantener conversaciones.
+                </p>
+
+                <span class="tag">ERA PREDICTIVA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 2016 -->
+
+        <article class="event predictive"
+        data-year="2016"
+        data-title="AlphaGo domina el juego de Go"
+        data-description="AlphaGo, desarrollado por DeepMind, derrota al campeón mundial de Go. El acontecimiento demuestra el enorme potencial del aprendizaje profundo y el aprendizaje por refuerzo."
+        data-image="https://images.unsplash.com/photo-1560174038-da43ac74f01b?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1560174038-da43ac74f01b?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">2016</div>
+
+                <h3>🎮 AlphaGo domina el juego de Go</h3>
+
+                <p>
+                    La IA derrota al campeón mundial
+                    y sorprende al mundo.
+                </p>
+
+                <span class="tag">ERA PREDICTIVA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 2022 -->
+
+        <article class="event generative"
+        data-year="2022"
+        data-title="La IA generativa cambia el mundo"
+        data-description="OpenAI lanza ChatGPT y la inteligencia artificial generativa se vuelve accesible para millones de personas. La IA comienza a utilizarse masivamente para escribir, programar, estudiar y crear contenido."
+        data-image="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">2022</div>
+
+                <h3>💬 La IA generativa cambia el mundo</h3>
+
+                <p>
+                    ChatGPT populariza la IA generativa
+                    a escala mundial.
+                </p>
+
+                <span class="tag">ERA GENERATIVA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 2023 -->
+
+        <article class="event generative"
+        data-year="2023"
+        data-title="Una nueva generación de modelos"
+        data-description="Los modelos de lenguaje avanzan rápidamente y aumentan sus capacidades de comprensión, razonamiento y generación de contenido."
+        data-image="https://images.unsplash.com/photo-1676299081847-824916de030a?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1676299081847-824916de030a?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">2023</div>
+
+                <h3>🧠 Una nueva generación de modelos</h3>
+
+                <p>
+                    Los modelos de IA mejoran su capacidad
+                    de comprender y generar información.
+                </p>
+
+                <span class="tag">ERA GENERATIVA</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 2024 -->
+
+        <article class="event current"
+        data-year="2024"
+        data-title="La IA se vuelve multimodal"
+        data-description="La inteligencia artificial comienza a combinar texto, imágenes, audio y otras formas de información, ampliando enormemente sus aplicaciones."
+        data-image="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">2024</div>
+
+                <h3>🌐 La IA se vuelve multimodal</h3>
+
+                <p>
+                    Texto, imágenes, audio y visión comienzan
+                    a integrarse en un mismo sistema.
+                </p>
+
+                <span class="tag">ERA ACTUAL</span>
+
+            </div>
+
+        </article>
+
+
+        <!-- 2025 -->
+
+        <article class="event current"
+        data-year="2025"
+        data-title="El inicio de los agentes de IA"
+        data-description="La inteligencia artificial avanza hacia sistemas capaces de comprender objetivos, utilizar herramientas, tomar decisiones y completar tareas con mayor autonomía."
+        data-image="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80">
+
+            <div class="dot"></div>
+
+            <div class="card">
+
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80">
+                </div>
+
+                <div class="year">2025</div>
+
+                <h3>🚀 El inicio de los agentes de IA</h3>
+
+                <p>
+                    La IA comienza a evolucionar hacia
+                    sistemas capaces de realizar tareas de forma autónoma.
+                </p>
+
+                <span class="tag">ERA ACTUAL</span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- FUTURO -->
+
+<section class="future">
+
+    <div class="badge">
+        ¿QUÉ SIGUE?
+    </div>
+
+    <h2>EL FUTURO<br>APENAS COMIENZA</h2>
+
+    <p>
+        La inteligencia artificial pasó de una simple neurona
+        matemática a sistemas capaces de aprender, crear,
+        razonar y colaborar con las personas.
+        <br><br>
+        <strong>La próxima fecha de esta línea del tiempo todavía no está escrita.</strong>
+    </p>
+
+</section>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-content">
+
+        <button class="close" id="close">×</button>
+
+        <img id="modalImage">
+
+        <div class="modal-year" id="modalYear"></div>
+
+        <h2 id="modalTitle"></h2>
+
+        <p id="modalDescription"></p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   PARTICULAS
+========================= */
+
+const particles = document.getElementById("particles");
+
+for(let i=0;i<100;i++){
+
+    const p=document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left=Math.random()*100+"%";
+    p.style.top=Math.random()*100+"%";
+
+    p.style.animationDelay=(Math.random()*8)+"s";
+
+    p.style.animationDuration=(5+Math.random()*8)+"s";
+
+    particles.appendChild(p);
+
+}
+
+
+/* =========================
+   ANIMACION TIMELINE
+========================= */
+
+const events=document.querySelectorAll(".event");
+
+const observer=new IntersectionObserver(
+
+    entries=>{
+
+        entries.forEach(entry=>{
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("visible");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.15
+    }
+
+);
+
+events.forEach(event=>observer.observe(event));
+
+
+/* =========================
+   FILTROS
+========================= */
+
+const filters=document.querySelectorAll(".filter");
+
+filters.forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        filters.forEach(b=>b.classList.remove("active"));
+
+        button.classList.add("active");
+
+        const filter=button.dataset.filter;
+
+        events.forEach(event=>{
+
+            if(filter==="all" || event.classList.contains(filter)){
+
+                event.style.display="block";
+
+            }else{
+
+                event.style.display="none";
+
+            }
+
+        });
+
+    });
+
+});
+
+
+/* =========================
+   MODAL
+========================= */
+
+const modal=document.getElementById("modal");
+const modalImage=document.getElementById("modalImage");
+const modalYear=document.getElementById("modalYear");
+const modalTitle=document.getElementById("modalTitle");
+const modalDescription=document.getElementById("modalDescription");
+const close=document.getElementById("close");
+
+events.forEach(event=>{
+
+    event.querySelector(".card").addEventListener("click",()=>{
+
+        modalImage.src=event.dataset.image;
+
+        modalYear.textContent=event.dataset.year;
+
+        modalTitle.textContent=event.dataset.title;
+
+        modalDescription.textContent=event.dataset.description;
+
+        modal.classList.add("show");
+
+        document.body.style.overflow="hidden";
+
+    });
+
+});
+
+
+function closeModal(){
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow="";
+
+}
+
+close.addEventListener("click",closeModal);
+
+modal.addEventListener("click",(e)=>{
+
+    if(e.target===modal){
+
+        closeModal();
+
+    }
+
+});
+
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        closeModal();
+
+    }
+
+});
+
+
+/* =========================
+   EFECTO PARALLAX
+========================= */
+
+document.addEventListener("mousemove",(e)=>{
+
+    const x=(e.clientX/window.innerWidth-.5)*10;
+    const y=(e.clientY/window.innerHeight-.5)*10;
+
+    document.querySelector(".hero-content").style.transform=
+        `translate(${x}px,${y}px)`;
+
+});
+
+</script>
+
+</body>
+</html>
