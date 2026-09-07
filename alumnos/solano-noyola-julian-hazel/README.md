@@ -10,3 +10,4 @@ Esta carpeta es tu espacio de trabajo para subir tus actividades.
 5. Abre un Pull Request hacia `main` desde GitHub y espera revisión del profesor.
 
 No modifiques archivos fuera de esta carpeta.
+git commit -m actividad1:Linea-del-tiempo
