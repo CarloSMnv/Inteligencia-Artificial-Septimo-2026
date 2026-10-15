@@ -1,0 +1,30 @@
+
+RUTA 1: Pinotepa Nacional -> Santa Catarina Juquila
+A*: Pinotepa Nacional -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 95 km | Conteo original: 5
+  Orden: ['Pinotepa Nacional', 'Santiago Jamiltepec', 'Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Santa Catarina Juquila']
+Costo uniforme: Pinotepa Nacional -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 95 km | Conteo original: 8
+  Orden: ['Pinotepa Nacional', 'Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Pinotepa Nacional', 'Santiago Jamiltepec', 'Pinotepa de Don Luis', 'Pinotepa Nacional', 'Santa Catarina Juquila']
+
+RUTA 2: Pinotepa de Don Luis -> Santa Catarina Juquila
+A*: Pinotepa de Don Luis -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 85 km | Conteo original: 3
+  Orden: ['Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Santa Catarina Juquila']
+Costo uniforme: Pinotepa de Don Luis -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 85 km | Conteo original: 8
+  Orden: ['Pinotepa de Don Luis', 'Pinotepa Nacional', 'Santiago Jamiltepec', 'Pinotepa de Don Luis', 'Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Pinotepa Nacional', 'Santa Catarina Juquila']
+
+RUTA 3: San Andrés Huaxpaltepec -> Santa Catarina Juquila
+A*: San Andrés Huaxpaltepec -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 79 km | Conteo original: 3
+  Orden: ['San Andrés Huaxpaltepec', 'Santiago Jamiltepec', 'Santa Catarina Juquila']
+Costo uniforme: San Andrés Huaxpaltepec -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 79 km | Conteo original: 10
+  Orden: ['San Andrés Huaxpaltepec', 'Santiago Jamiltepec', 'San Andrés Huaxpaltepec', 'Pinotepa de Don Luis', 'Pinotepa Nacional', 'Pinotepa Nacional', 'Santiago Jamiltepec', 'Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Santa Catarina Juquila']
+
+TABLA RESUMEN - ACTIVIDAD 1
+Ruta  Costo km    A*       Sin heurística    
+1     95          5        8                 
+2     85          3        8                 
+3     79          3        10                

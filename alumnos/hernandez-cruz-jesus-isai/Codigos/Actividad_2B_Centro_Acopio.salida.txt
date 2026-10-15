@@ -1,0 +1,10 @@
+ACTIVIDAD 2B - CENTRO DE ACOPIO
+ASCENSO DE COLINA
+Inicio km  0: centro = km 18.00 | costo = 808.0 ton*km
+Inicio km 30: centro = km 18.00 | costo = 808.0 ton*km
+Inicio km 65: centro = km 18.00 | costo = 808.0 ton*km
+
+TEMPLE SIMULADO (semilla 7)
+Inicio km  0: centro = km 18.00 | costo = 808.0 ton*km
+Inicio km 30: centro = km 18.01 | costo = 808.1 ton*km
+Inicio km 65: centro = km 18.01 | costo = 808.1 ton*km
