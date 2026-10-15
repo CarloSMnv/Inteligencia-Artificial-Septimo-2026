@@ -1,0 +1,10 @@
+ACTIVIDAD 2A - FUNCIÓN CON VARIOS PICOS
+ASCENSO DE COLINA
+Inicio x= -8: x final =  -3.70 | f(x) = -2.956
+Inicio x=  0: x final =   1.00 | f(x) = 0.084
+Inicio x=  8: x final =   7.00 | f(x) = 0.708
+
+TEMPLE SIMULADO (semilla 42)
+Inicio x= -8: x final =   2.42 | f(x) = 0.576
+Inicio x=  0: x final =   2.42 | f(x) = 0.576
+Inicio x=  8: x final =   7.02 | f(x) = 0.709

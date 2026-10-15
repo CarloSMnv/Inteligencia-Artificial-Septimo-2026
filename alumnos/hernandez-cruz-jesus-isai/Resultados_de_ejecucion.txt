@@ -1,0 +1,55 @@
+=== Actividad_1_Mapa_A_Estrella.py ===
+
+RUTA 1: Pinotepa Nacional -> Santa Catarina Juquila
+A*: Pinotepa Nacional -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 95 km | Conteo original: 5
+  Orden: ['Pinotepa Nacional', 'Santiago Jamiltepec', 'Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Santa Catarina Juquila']
+Costo uniforme: Pinotepa Nacional -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 95 km | Conteo original: 8
+  Orden: ['Pinotepa Nacional', 'Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Pinotepa Nacional', 'Santiago Jamiltepec', 'Pinotepa de Don Luis', 'Pinotepa Nacional', 'Santa Catarina Juquila']
+
+RUTA 2: Pinotepa de Don Luis -> Santa Catarina Juquila
+A*: Pinotepa de Don Luis -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 85 km | Conteo original: 3
+  Orden: ['Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Santa Catarina Juquila']
+Costo uniforme: Pinotepa de Don Luis -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 85 km | Conteo original: 8
+  Orden: ['Pinotepa de Don Luis', 'Pinotepa Nacional', 'Santiago Jamiltepec', 'Pinotepa de Don Luis', 'Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Pinotepa Nacional', 'Santa Catarina Juquila']
+
+RUTA 3: San Andrés Huaxpaltepec -> Santa Catarina Juquila
+A*: San Andrés Huaxpaltepec -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 79 km | Conteo original: 3
+  Orden: ['San Andrés Huaxpaltepec', 'Santiago Jamiltepec', 'Santa Catarina Juquila']
+Costo uniforme: San Andrés Huaxpaltepec -> Santiago Jamiltepec -> Santa Catarina Juquila
+  Costo: 79 km | Conteo original: 10
+  Orden: ['San Andrés Huaxpaltepec', 'Santiago Jamiltepec', 'San Andrés Huaxpaltepec', 'Pinotepa de Don Luis', 'Pinotepa Nacional', 'Pinotepa Nacional', 'Santiago Jamiltepec', 'Pinotepa de Don Luis', 'Santiago Jamiltepec', 'Santa Catarina Juquila']
+
+TABLA RESUMEN - ACTIVIDAD 1
+Ruta  Costo km    A*       Sin heurística    
+1     95          5        8                 
+2     85          3        8                 
+3     79          3        10                
+
+=== Actividad_2A_Busqueda_Local.py ===
+ACTIVIDAD 2A - FUNCIÓN CON VARIOS PICOS
+ASCENSO DE COLINA
+Inicio x= -8: x final =  -3.70 | f(x) = -2.956
+Inicio x=  0: x final =   1.00 | f(x) = 0.084
+Inicio x=  8: x final =   7.00 | f(x) = 0.708
+
+TEMPLE SIMULADO (semilla 42)
+Inicio x= -8: x final =   2.42 | f(x) = 0.576
+Inicio x=  0: x final =   2.42 | f(x) = 0.576
+Inicio x=  8: x final =   7.02 | f(x) = 0.709
+
+=== Actividad_2B_Centro_Acopio.py ===
+ACTIVIDAD 2B - CENTRO DE ACOPIO
+ASCENSO DE COLINA
+Inicio km  0: centro = km 18.00 | costo = 808.0 ton*km
+Inicio km 30: centro = km 18.00 | costo = 808.0 ton*km
+Inicio km 65: centro = km 18.00 | costo = 808.0 ton*km
+
+TEMPLE SIMULADO (semilla 7)
+Inicio km  0: centro = km 18.00 | costo = 808.0 ton*km
+Inicio km 30: centro = km 18.01 | costo = 808.1 ton*km
+Inicio km 65: centro = km 18.01 | costo = 808.1 ton*km
