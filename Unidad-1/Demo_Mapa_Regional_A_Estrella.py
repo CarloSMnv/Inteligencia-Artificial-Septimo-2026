@@ -53,12 +53,15 @@ def busqueda_no_informada(grafo, inicio, meta):
 
 # ---- El mapa real ----
 # grafo no dirigido: se agregan ambas direcciones
+
 mapa = {
-    "Pinotepa Nacional": [("Pinotepa de Don Luis", 18), ("Santiago Jamiltepec", 30)],
-    "Pinotepa de Don Luis": [("Pinotepa Nacional", 18), ("Santiago Jamiltepec", 20)],
-    "Santiago Jamiltepec": [("Pinotepa Nacional", 30), ("Pinotepa de Don Luis", 20), ("Santa Catarina Juquila", 65)],
+    "Pinotepa Nacional": [("Pinotepa de Don Luis", 18),("Santiago Jamiltepec", 30),("Cuajiniquilapa", 30)],
+    "Pinotepa de Don Luis": [("Pinotepa Nacional", 18),("Santiago Jamiltepec", 20),("Cuajiniquilapa", 30)],
+    "Santiago Jamiltepec": [("Pinotepa Nacional", 30),("Pinotepa de Don Luis", 20),("Santa Catarina Juquila", 65),("Cuajiniquilapa", 30)],
     "Santa Catarina Juquila": [("Santiago Jamiltepec", 65)],
+    "Cuajiniquilapa": [("Pinotepa Nacional", 30),("Pinotepa de Don Luis", 18),("Santiago Jamiltepec", 30)]
 }
+
 
 # Heurística: distancia en línea recta hacia Santa Catarina Juquila (meta)
 heuristica_hacia_juquila = {
@@ -66,11 +69,12 @@ heuristica_hacia_juquila = {
     "Pinotepa de Don Luis": 69,
     "Santiago Jamiltepec": 55,
     "Santa Catarina Juquila": 0,
+    "Cuajiniquilapa": 85
 }
 
 
 if __name__ == "__main__":
-    inicio, meta = "Pinotepa Nacional", "Santa Catarina Juquila"
+    inicio, meta = "Cuajiniquilapa", "Santa Catarina Juquila"
 
     print("=" * 68)
     print(f"RUTA: {inicio}  ->  {meta}")
